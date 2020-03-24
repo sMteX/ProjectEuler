@@ -12,7 +12,7 @@ namespace ProjectEuler
             // test();
             // return;
 
-            int currentProblem = 55;
+            int currentProblem = 56;
 
             var type = Type.GetType($"ProjectEuler.Problem{currentProblem}");
             if (type == null) {
