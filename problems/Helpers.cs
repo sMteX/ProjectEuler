@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProjectEuler
+namespace ProjectEuler.problems
 {
     public static class Helpers
     {

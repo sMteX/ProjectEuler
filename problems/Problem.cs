@@ -1,4 +1,4 @@
-namespace ProjectEuler
+namespace ProjectEuler.problems
 {
     public interface Problem
     {

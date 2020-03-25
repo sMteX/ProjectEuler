@@ -1,4 +1,5 @@
 ﻿using System;
+using ProjectEuler.problems;
 
 namespace ProjectEuler
 {
@@ -12,18 +13,15 @@ namespace ProjectEuler
             // test();
             // return;
 
-            int currentProblem = 56;
-
-            var type = Type.GetType($"ProjectEuler.Problem{currentProblem}");
-            if (type == null) {
-                type = Type.GetType($"ProjectEuler.problems.Problem{currentProblem}");
-            } 
-            if (type == null) {
-                System.Console.WriteLine("Problem doesn't exist");
-            } else {
-                var problem = (Problem)Activator.CreateInstance(type);
-                problem.run();
+            int latestProblem = 49;
+            Type latest = null, type;
+            while ((type = Type.GetType($"ProjectEuler.problems.Problem{latestProblem}")) != null) {
+                latest = type;
+                latestProblem++;
             }
+
+            var problem = (Problem)Activator.CreateInstance(latest);
+            problem.run();
         }
     }
 }
