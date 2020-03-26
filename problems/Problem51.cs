@@ -7,7 +7,7 @@ namespace ProjectEuler.problems
 {
     public class Problem51 : Problem
     {
-        List<bool> sieve = new List<bool>();
+        BitArray sieve = null;
 
         public void run()
         {

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections;
 
 namespace ProjectEuler.problems
 {
     class Problem50: Problem
     {
-        private List<bool> sieve = new List<bool>();
-
         public void run()
         {
             // The prime 41, can be written as the sum of six consecutive primes:
@@ -23,24 +20,24 @@ namespace ProjectEuler.problems
             int maxPrime = 2;
             int maxCount = 0;
 
-            this.sieve = Helpers.getSieve(1_000_000);
+            BitArray sieve = Helpers.getSieve(1_000_000);
 
             // basically iterate through all consecutive prime sums that sum up to 1 million
-            foreach (var prime in this.primes(2)) {
+            foreach (var prime in Helpers.primes(2, sieve)) {
                 int sum = prime;
                 int count = 1;
 
                 int localMaxSum = prime;
                 int localMaxCount = 1;
 
-                foreach (var nextPrime in this.primes(prime + 1)) {
+                foreach (var nextPrime in Helpers.primes(prime + 1, sieve)) {
                     if (sum + nextPrime >= 1_000_000) {
                         break;
                     }
                     sum += nextPrime;
                     count++;
                     // since the sum increases, and so does the count, keep track of the latest (and largest) sum and respective prime count
-                    if (this.sieve[sum]) {
+                    if (sieve[sum]) {
                         localMaxSum = sum;
                         localMaxCount = count;
                     }
@@ -54,14 +51,6 @@ namespace ProjectEuler.problems
             }
             Console.WriteLine("Largest consecutive prime sum below 1 000 000:");
             Console.WriteLine($"Max prime: {maxPrime}, starting prime: {maxStarting}, count: {maxCount}");
-
-        }
-        private IEnumerable<int> primes(int from) {
-            for (int i = from; i < this.sieve.Count; i++) {
-                if (this.sieve[i]) {
-                    yield return i;
-                }
-            }
         }
     }
 }
