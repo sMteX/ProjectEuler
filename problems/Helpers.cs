@@ -141,5 +141,37 @@ namespace ProjectEuler.problems
                 }
             }
         }
+        private static void swap (List<int> a, int i, int j) {
+            int temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+        }
+        // Generating permutation using Heap Algorithm 
+        public static IEnumerable<List<int>> getPermutations(List<int> a) 
+        { 
+            // from wikipedia - https://en.wikipedia.org/wiki/Heap's_algorithm
+            int n = a.Count;
+            List<int> c = Enumerable.Repeat(0, n).ToList();
+
+            yield return a;
+
+            int i = 0;
+
+            while (i < n) {
+                if (c[i] < i) {
+                    if (i % 2 == 0) {
+                        swap(a, 0, i);
+                    } else {
+                        swap(a, c[i], i);
+                    }
+                    yield return a;
+                    c[i]++;
+                    i = 0;
+                } else {
+                    c[i] = 0;
+                    i++;
+                }
+            }
+        } 
     }
 }
