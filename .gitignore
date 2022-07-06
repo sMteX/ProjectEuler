@@ -9,3 +9,5 @@
 
 # precalculated prime sieve - too large for git
 problems/primeSieve.dat
+
+node_modules

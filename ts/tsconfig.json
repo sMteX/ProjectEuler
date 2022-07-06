@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "target": "es2017",
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "lib": ["es2019"],
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "useUnknownInCatchVariables": false
+  },
+  "include": ["index.ts", "problems/*.ts"],
+}
